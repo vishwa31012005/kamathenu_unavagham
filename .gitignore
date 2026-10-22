@@ -1,0 +1,11 @@
+# Server files
+server.ps1
+server-startup.log
+server-startup-error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
