@@ -128,11 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="craving-card" data-category="${c.targetCategory}" role="button" tabindex="0" title="Explore ${c.name}">
         <div class="craving-img-box">
           <img src="${c.image}" alt="${c.name} at Kamathenu Unavagham" loading="lazy" />
+          <span class="craving-floating-tag">${c.tag}</span>
           <div class="craving-overlay"></div>
         </div>
         <div class="craving-content">
           <h3 class="craving-name">${c.name}</h3>
-          <span class="craving-tag">${c.tag}</span>
+          <span class="craving-explore-btn">Explore Menu <span class="arrow">&rarr;</span></span>
         </div>
       </div>
     `
@@ -325,35 +326,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxPrevBtn = document.getElementById("lightboxPrevBtn");
   const lightboxNextBtn = document.getElementById("lightboxNextBtn");
 
-  if (galleryContainer && data.atmosphereGallery) {
-    galleryContainer.innerHTML = data.atmosphereGallery
-      .map(
-        (item, index) => `
-      <div class="gallery-item" data-index="${index}" role="button" tabindex="0" title="Click to view full image">
-        <img src="${item.src}" alt="${item.title} at Kamathenu Unavagham" loading="lazy" />
-        <div class="gallery-item-overlay">
-          <div class="gallery-overlay-title">${item.title}</div>
-          <div class="gallery-overlay-sub">${item.subtitle}</div>
-        </div>
-        <div class="gallery-zoom-badge">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
+  if (galleryContainer && data.atmosphereGallery && data.atmosphereGallery.length > 0) {
+    const half = Math.ceil(data.atmosphereGallery.length / 2);
+    const row1 = data.atmosphereGallery.slice(0, half);
+    const row2 = data.atmosphereGallery.slice(half);
+
+    const renderSlide = (item, origIndex) => `
+      <div class="gallery-slide-card" data-index="${origIndex}" role="button" tabindex="0" title="Click to view full image: ${item.title}">
+        <div class="gallery-slide-img-wrap">
+          <img src="${item.src}" alt="${item.title} at Kamathenu Unavagham" loading="lazy" />
+          <div class="gallery-slide-overlay">
+            <span class="gallery-slide-tag">${item.category || "Showcase"}</span>
+            <div class="gallery-slide-text">
+              <h4 class="gallery-slide-title">${item.title}</h4>
+              <p class="gallery-slide-sub">${item.subtitle}</p>
+            </div>
+          </div>
+          <div class="gallery-zoom-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
         </div>
       </div>
-    `
-      )
-      .join("");
+    `;
 
-    galleryContainer.querySelectorAll(".gallery-item").forEach((item) => {
-      item.addEventListener("click", () => {
-        const idx = parseInt(item.getAttribute("data-index"), 10);
+    galleryContainer.innerHTML = `
+      <div class="gallery-marquee-wrap">
+        <!-- Top Track: Continuously moves LEFT -->
+        <div class="gallery-marquee-row row-move-left" aria-label="Gallery Showcase Row 1">
+          <div class="gallery-marquee-track">
+            ${row1.map((item, i) => renderSlide(item, i)).join("")}
+            ${row1.map((item, i) => renderSlide(item, i)).join("")}
+          </div>
+        </div>
+
+        <!-- Bottom Track: Continuously moves RIGHT -->
+        <div class="gallery-marquee-row row-move-right" aria-label="Gallery Showcase Row 2">
+          <div class="gallery-marquee-track">
+            ${row2.map((item, i) => renderSlide(item, half + i)).join("")}
+            ${row2.map((item, i) => renderSlide(item, half + i)).join("")}
+          </div>
+        </div>
+      </div>
+    `;
+
+    galleryContainer.querySelectorAll(".gallery-slide-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const idx = parseInt(card.getAttribute("data-index"), 10);
         openLightbox(idx);
       });
-      item.addEventListener("keydown", (e) => {
+      card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          item.click();
+          card.click();
         }
       });
     });
@@ -556,4 +582,394 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  /* --------------------------------------------------------------------------
+     11. Interactive 3D Botanical Particle Canvas in Hero Section
+     -------------------------------------------------------------------------- */
+  function initHeroParticleCanvas() {
+    const canvas = document.getElementById("heroParticleCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let width = (canvas.width = canvas.offsetWidth);
+    let height = (canvas.height = canvas.offsetHeight);
+
+    const particles = [];
+    const count = window.innerWidth < 768 ? 22 : 42;
+    const colors = [
+      "rgba(201, 239, 114, 0.45)",
+      "rgba(255, 215, 0, 0.35)",
+      "rgba(255, 116, 87, 0.32)",
+      "rgba(37, 71, 52, 0.3)"
+    ];
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        z: Math.random() * 0.8 + 0.2,
+        radius: Math.random() * 3 + 1.2,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: -Math.random() * 0.45 - 0.15,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.02
+      });
+    }
+
+    let mouseX = width / 2;
+    let mouseY = height / 2;
+    let targetX = mouseX;
+    let targetY = mouseY;
+
+    window.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      if (e.clientY < rect.bottom && e.clientY > rect.top) {
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (!canvas) return;
+      width = canvas.width = canvas.offsetWidth;
+      height = canvas.height = canvas.offsetHeight;
+    });
+
+    let isVisible = true;
+    const obs = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    });
+    obs.observe(canvas);
+
+    function animate() {
+      if (isVisible) {
+        ctx.clearRect(0, 0, width, height);
+
+        mouseX += (targetX - mouseX) * 0.04;
+        mouseY += (targetY - mouseY) * 0.04;
+        const offsetX = (mouseX - width / 2) * 0.035;
+        const offsetY = (mouseY - height / 2) * 0.035;
+
+        particles.forEach((p) => {
+          p.x += p.vx + offsetX * p.z;
+          p.y += p.vy + offsetY * p.z;
+          p.angle += p.spin;
+
+          if (p.y < -12) {
+            p.y = height + 10;
+            p.x = Math.random() * width;
+          }
+          if (p.x < -12) p.x = width + 10;
+          if (p.x > width + 12) p.x = -10;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.angle);
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.radius * p.z * 1.5, p.radius * p.z, p.angle, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  /* --------------------------------------------------------------------------
+     12. 3D Tilt & Specular Physics Engine on Cards
+     -------------------------------------------------------------------------- */
+  function init3DTiltCards() {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    const cards = document.querySelectorAll(
+      ".craving-card, .stall-card, .hero-image-frame, .location-info-card, .gallery-slide-card"
+    );
+
+    cards.forEach((card) => {
+      let bounds;
+      let glare = card.querySelector(".card-specular-glare");
+      if (!glare) {
+        glare = document.createElement("div");
+        glare.className = "card-specular-glare";
+        card.appendChild(glare);
+      }
+
+      function onMouseMove(e) {
+        if (!bounds) bounds = card.getBoundingClientRect();
+        const mouseX = e.clientX - bounds.left;
+        const mouseY = e.clientY - bounds.top;
+        const xPct = mouseX / bounds.width - 0.5;
+        const yPct = mouseY / bounds.height - 0.5;
+
+        const rotateY = xPct * 11;
+        const rotateX = -yPct * 11;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px) scale3d(1.02, 1.02, 1.02)`;
+
+        const glareX = (mouseX / bounds.width) * 100;
+        const glareY = (mouseY / bounds.height) * 100;
+        glare.style.opacity = "1";
+        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.22) 0%, transparent 60%)`;
+      }
+
+      function onMouseEnter() {
+        bounds = card.getBoundingClientRect();
+        card.style.transition = "transform 0.12s ease-out, box-shadow 0.25s ease";
+      }
+
+      function onMouseLeave() {
+        card.style.transition = "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease";
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)";
+        if (glare) glare.style.opacity = "0";
+        bounds = null;
+      }
+
+      card.addEventListener("mouseenter", onMouseEnter);
+      card.addEventListener("mousemove", onMouseMove);
+      card.addEventListener("mouseleave", onMouseLeave);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     13. Live Open Hours Indicator
+     -------------------------------------------------------------------------- */
+  function initLiveStatus() {
+    const statusText = document.getElementById("liveStatusText");
+    const navLive = document.getElementById("navLiveStatus");
+    if (!statusText || !navLive) return;
+
+    function update() {
+      const now = new Date();
+      const hour = now.getHours();
+      if (hour >= 8 && hour < 20) {
+        statusText.innerHTML = `Open Now &bull; Closes 8 PM`;
+        navLive.classList.remove("status-closed");
+        navLive.classList.add("status-open");
+      } else {
+        statusText.innerHTML = `Opens 8 AM Tomorrow`;
+        navLive.classList.remove("status-open");
+        navLive.classList.add("status-closed");
+      }
+    }
+    update();
+    setInterval(update, 60000);
+  }
+
+  /* --------------------------------------------------------------------------
+     14. Interactive 3D Food Decision Spinner ("Can't Decide?")
+     -------------------------------------------------------------------------- */
+  function initFoodSpinner() {
+    const triggerBtn = document.getElementById("foodSpinnerTriggerBtn");
+    const modal = document.getElementById("foodSpinnerModal");
+    const backdrop = document.getElementById("foodSpinnerBackdrop");
+    const closeBtn = document.getElementById("foodSpinnerCloseBtn");
+    const spinAgainBtn = document.getElementById("spinAgainBtn");
+    const goToStallBtn = document.getElementById("spinnerGoToStallBtn");
+
+    const resultImg = document.getElementById("spinnerResultImg");
+    const resultName = document.getElementById("spinnerDishName");
+    const resultCategory = document.getElementById("spinnerDishCategory");
+    const resultStall = document.getElementById("spinnerDishStall");
+    const spinnerCard = document.getElementById("foodSpinnerCard");
+
+    if (!triggerBtn || !modal) return;
+
+    const dishes = [
+      { name: "BFT Express & Milk Tea", stall: "Kamathenu Coffee Shop", stallId: "kamathenu-coffee-shop", cat: "Tea & Coffee", img: "image/shops/kamathenu-coffee-shop.jpeg" },
+      { name: "Crispy Fried Chicken Wings", stall: "Fryzo", stallId: "fryzo", cat: "Fried Chicken", img: "image/food/fried-chicken.jpg" },
+      { name: "Loaded Gourmet Cheese Burger", stall: "Fryzo", stallId: "fryzo", cat: "Burgers", img: "image/food/burgers.jpg" },
+      { name: "Chicken Biryani Feast", stall: "Kamathenu Restaurant", stallId: "kamathenu-restaurant", cat: "Hearty Meals", img: "image/shops/kamathenu-restaurant.jpeg" },
+      { name: "Belgian Chocolate Waffle", stall: "Guru Cool Hub", stallId: "guru-cool-hub", cat: "Desserts", img: "image/food/waffles.jpg" },
+      { name: "Chilled Sparkling Mojito", stall: "Guru Cool Hub", stallId: "guru-cool-hub", cat: "Fresh Juices", img: "image/food/drinks.jpg" },
+      { name: "Crispy Peri Peri Spiral Potato", stall: "Hot Spring", stallId: "hot-spring", cat: "Potato Tornado", img: "image/food/potato-rolls.jpg" },
+      { name: "Steamed & Fried Momos", stall: "Fryzo", stallId: "fryzo", cat: "Momos", img: "image/food/momos.jpg" },
+      { name: "Natural Mudakathan Herbal Soup", stall: "Natural Soups", stallId: "natural-soups", cat: "Wellness Soup", img: "image/food/natural-soups.jpg" },
+      { name: "Pani Puri & Bombay Chaats", stall: "Bombay Chats", stallId: "bombay-chats", cat: "Street Chaats", img: "image/food/chats.jpg" },
+      { name: "Lazza Matka Kulfi & Cassata", stall: "Lazza Ice Cream Premium Gold", stallId: "lazza-premium-gold", cat: "Ice Creams", img: "image/shops/lazza-premium-gold.jpeg" },
+      { name: "Exotic Mango Ice Popstick", stall: "A2A Ice Popsticks & Icecreams", stallId: "a2a-ice-popsticks", cat: "Ice Pops", img: "image/food/ice-pops.jpg" },
+      { name: "Fresh Butter Popcorn", stall: "SR Popcorn", stallId: "sr-popcorn", cat: "Cinema Snacks", img: "image/food/popcorn.jpg" },
+      { name: "Golden Giant Delhi Appalam", stall: "Delhi Appalam", stallId: "delhi-appalam", cat: "Giant Snacks", img: "image/shops/delhi-appalam.jpeg" }
+    ];
+
+    let currentChoice = dishes[0];
+    let isSpinning = false;
+
+    function spin() {
+      if (isSpinning) return;
+      isSpinning = true;
+      if (spinnerCard) spinnerCard.classList.add("spinning");
+      if (spinAgainBtn) spinAgainBtn.disabled = true;
+
+      let count = 0;
+      const totalSteps = 16;
+      const timer = setInterval(() => {
+        const rand = dishes[Math.floor(Math.random() * dishes.length)];
+        if (resultName) resultName.textContent = rand.name;
+        if (resultCategory) resultCategory.textContent = rand.cat;
+        if (resultStall) resultStall.textContent = `Available at: ${rand.stall}`;
+        if (resultImg) resultImg.src = rand.img;
+        count++;
+
+        if (count >= totalSteps) {
+          clearInterval(timer);
+          currentChoice = dishes[Math.floor(Math.random() * dishes.length)];
+          if (resultName) resultName.textContent = currentChoice.name;
+          if (resultCategory) resultCategory.textContent = currentChoice.cat;
+          if (resultStall) resultStall.textContent = `Available at: ${currentChoice.stall}`;
+          if (resultImg) resultImg.src = currentChoice.img;
+
+          if (spinnerCard) {
+            spinnerCard.classList.remove("spinning");
+            spinnerCard.classList.add("winner-bounce");
+            setTimeout(() => spinnerCard.classList.remove("winner-bounce"), 700);
+          }
+
+          isSpinning = false;
+          if (spinAgainBtn) spinAgainBtn.disabled = false;
+        }
+      }, 70);
+    }
+
+    function openModal() {
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+      spin();
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    triggerBtn.addEventListener("click", openModal);
+    if (backdrop) backdrop.addEventListener("click", closeModal);
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (spinAgainBtn) spinAgainBtn.addEventListener("click", spin);
+
+    if (goToStallBtn) {
+      goToStallBtn.addEventListener("click", () => {
+        closeModal();
+        if (currentChoice && currentChoice.stallId) {
+          openStallModal(currentChoice.stallId);
+        } else {
+          const s = document.getElementById("stalls");
+          if (s) s.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (modal.classList.contains("open") && e.key === "Escape") {
+        closeModal();
+      }
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     15. Live Instant Search for Stalls & Menu
+     -------------------------------------------------------------------------- */
+  function initLiveStallSearch() {
+    const searchInput = document.getElementById("stallSearchInput");
+    const clearBtn = document.getElementById("stallSearchClearBtn");
+    const feedback = document.getElementById("stallSearchFeedback");
+    const stallsContainer = document.getElementById("stallsGrid");
+
+    if (!searchInput || !stallsContainer) return;
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      if (clearBtn) clearBtn.style.display = query.length > 0 ? "block" : "none";
+
+      const stallCards = stallsContainer.querySelectorAll(".stall-card");
+
+      if (!query) {
+        stallCards.forEach((c) => (c.style.display = "flex"));
+        if (feedback) feedback.style.display = "none";
+        return;
+      }
+
+      let matchCount = 0;
+
+      stallCards.forEach((card) => {
+        const stallId = card.getAttribute("data-stall-id");
+        const stall = data.stalls.find((s) => s.id === stallId);
+        if (!stall) return;
+
+        const menuMatches = data.menuItems.some(
+          (m) =>
+            m.stall === stall.name &&
+            (m.name.toLowerCase().includes(query) ||
+              (m.description && m.description.toLowerCase().includes(query)))
+        );
+
+        const stallMatches =
+          stall.name.toLowerCase().includes(query) ||
+          stall.badge.toLowerCase().includes(query) ||
+          stall.description.toLowerCase().includes(query) ||
+          (stall.specialties &&
+            stall.specialties.some((s) => s.toLowerCase().includes(query)));
+
+        if (stallMatches || menuMatches) {
+          card.style.display = "flex";
+          matchCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      if (feedback) {
+        feedback.style.display = "block";
+        feedback.innerHTML =
+          matchCount > 0
+            ? `Found <strong>${matchCount} stall${matchCount > 1 ? "s" : ""}</strong> offering items matching "<em>${query}</em>"`
+            : `No stalls found matching "<em>${query}</em>". Try searching for <em>bft, biryani, tea, burger, or juice</em>.`;
+      }
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        searchInput.dispatchEvent(new Event("input"));
+        searchInput.focus();
+      });
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     16. Scroll-Triggered Reveal Animations
+     -------------------------------------------------------------------------- */
+  function initScrollReveal() {
+    const revealTargets = document.querySelectorAll(
+      ".section-header, .cravings-grid, .stall-card, .location-grid, .facilities-grid, .review-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    revealTargets.forEach((target) => {
+      target.classList.add("reveal-on-scroll");
+      observer.observe(target);
+    });
+  }
+
+  // Run all enhancements
+  initHeroParticleCanvas();
+  init3DTiltCards();
+  initLiveStatus();
+  initFoodSpinner();
+  initLiveStallSearch();
+  initScrollReveal();
 });

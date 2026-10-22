@@ -52,14 +52,20 @@
         <a href="#home" class="nav-link active">Home</a>
         <a href="#cravings" class="nav-link">Food</a>
         <a href="#stalls" class="nav-link">Stalls</a>
-        <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#gallery" class="nav-link">Gallery</a>
         <a href="#location" class="nav-link">Location</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
       <!-- Right Nav Actions -->
       <div class="nav-actions">
+        <!-- Live Open Hours Indicator -->
+        <div class="nav-live-status" id="navLiveStatus" title="Park dining hours: 8:00 AM - 8:00 PM">
+          <span class="live-dot"></span>
+          <span class="live-status-text" id="liveStatusText">Open Now &bull; Closes 8 PM</span>
+        </div>
+
         <a href="https://www.google.com/maps/place/Kamathenu+Unavagham/@11.0088818,76.9640715,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba8595911a39f2d:0x846f994e08f4648e!8m2!3d11.0088818!4d76.9666464!16s%2Fg%2F11myg5jw9r" 
            target="_blank" 
            rel="noopener noreferrer" 
@@ -107,10 +113,6 @@
         <span>Explore Food Stalls</span>
         <span>&rarr;</span>
       </a>
-      <a href="#reviews" class="mobile-nav-link">
-        <span>Customer Reviews</span>
-        <span>&rarr;</span>
-      </a>
       <a href="#why-visit" class="mobile-nav-link">
         <span>Why Visit</span>
         <span>&rarr;</span>
@@ -127,6 +129,10 @@
         <span>Location & Parking</span>
         <span>&rarr;</span>
       </a>
+      <a href="#reviews" class="mobile-nav-link">
+        <span>Customer Reviews</span>
+        <span>&rarr;</span>
+      </a>
       <a href="#contact" class="mobile-nav-link">
         <span>Contact & Visit</span>
         <span>&rarr;</span>
@@ -134,17 +140,17 @@
     </nav>
 
     <div class="mobile-drawer-footer">
-      <a href="https://wa.me/919626009779" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color: #22c55e; color: #15803d;">
+      <a href="https://wa.me/919207877770" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color: #22c55e; color: #15803d;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
         </svg>
-        <span>WhatsApp: 9626009779</span>
+        <span>WhatsApp: 9207877770</span>
       </a>
-      <a href="tel:+919626009779" class="btn btn-outline">
+      <a href="tel:+919207877770" class="btn btn-outline">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
-        <span>Call: 9626009779</span>
+        <span>Call: 9207877770</span>
       </a>
       <a href="https://www.google.com/maps/place/Kamathenu+Unavagham/@11.0088818,76.9640715,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba8595911a39f2d:0x846f994e08f4648e!8m2!3d11.0088818!4d76.9666464!16s%2Fg%2F11myg5jw9r" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -159,6 +165,9 @@
        2. HERO SECTION - 3D Motion Graphics & Premium Luxury Theme
        ========================================================================== -->
   <section class="hero-section" id="home">
+    <!-- Interactive 3D Botanical Particle Canvas -->
+    <canvas id="heroParticleCanvas" class="hero-particle-canvas" aria-hidden="true"></canvas>
+
     <div class="container hero-container">
       <div class="hero-grid">
         <div class="hero-content">
@@ -173,16 +182,35 @@
           <div class="hero-quick-facts"><span>🍜 Meals & street bites</span><span>🍦 Chilled treats</span><span>🌿 Parkside tables</span></div>
         </div>
         <div class="hero-showcase-wrap">
-          <div class="hero-image-frame" id="heroFrontviewCard" role="button" tabindex="0" title="View campus photos">
-            <img src="image/shops/front-view.jpeg" alt="The warmly lit Kamathenu Unavagham entrance at Semmozhi Poonga" class="hero-frontview-img" fetchpriority="high" />
-            <div class="hero-image-caption"><span class="hero-image-caption-kicker">YOUR PARKSIDE FOOD STOP</span><span class="hero-image-caption-title">Meet you by the food. <span aria-hidden="true">↗</span></span></div>
+          <div class="hero-image-frame" id="heroFrontviewCard" role="button" tabindex="0" title="Click to view full photo of Kamathenu Unavagham">
+            <img src="image/shops/front-view.jpeg" alt="Kamathenu Unavagham front shop entrance at Semmozhi Poonga" class="hero-frontview-img" fetchpriority="high" />
+            <div class="hero-image-caption">
+              <span class="hero-image-caption-kicker">SEMMOZHI POONGA · COIMBATORE</span>
+              <span class="hero-image-caption-title">KAMATHENU UNAVAGHAM</span>
+            </div>
           </div>
-          <div class="hero-image-sticker" aria-hidden="true"><span>GOOD<br>MOOD<br>FOOD</span><span class="sticker-spark">✳</span></div>
-          <div class="hero-photo-note"><span class="hero-photo-note-dot"></span> Right inside Semmozhi Poonga</div>
+          <div class="hero-photo-note"><span class="hero-photo-note-dot"></span> Located inside Semmozhi Poonga, Near the Play Area</div>
         </div>
       </div>
     </div>
-    <div class="hero-bottom-note"><span>COME HUNGRY</span><span aria-hidden="true">✳</span><span>LEAVE HAPPY</span><span aria-hidden="true">✳</span><span>COME BACK SOON</span></div>
+    <!-- Infinite Smooth Rolling Bottom Ticker -->
+    <div class="hero-bottom-ticker-wrap" aria-hidden="true">
+      <div class="hero-bottom-ticker-track">
+        <span>COME HUNGRY</span><span>✳</span>
+        <span>LEAVE HAPPY</span><span>✳</span>
+        <span>COME BACK SOON</span><span>✳</span>
+        <span>DIFFERENT TASTES, ONE DESTINATION</span><span>✳</span>
+        <span>INSIDE SEMMOZHI POONGA COIMBATORE</span><span>✳</span>
+        <span>OPEN ALL DAYS 8:00 AM - 8:00 PM</span><span>✳</span>
+        <!-- Duplicated for seamless infinite loop -->
+        <span>COME HUNGRY</span><span>✳</span>
+        <span>LEAVE HAPPY</span><span>✳</span>
+        <span>COME BACK SOON</span><span>✳</span>
+        <span>DIFFERENT TASTES, ONE DESTINATION</span><span>✳</span>
+        <span>INSIDE SEMMOZHI POONGA COIMBATORE</span><span>✳</span>
+        <span>OPEN ALL DAYS 8:00 AM - 8:00 PM</span><span>✳</span>
+      </div>
+    </div>
   </section>
   <section class="section section-cream" id="cravings">
     <div class="container">
@@ -192,6 +220,15 @@
         <p class="section-subtitle">
           From hearty hot meals to refreshing fruit ice popsticks, discover tantalizing flavors crafted across our food court. Tap any craving to explore its offerings.
         </p>
+
+        <!-- Interactive Food Decision Wheel Button -->
+        <div class="craving-spinner-cta-wrap">
+          <button type="button" class="btn-food-spinner" id="foodSpinnerTriggerBtn" aria-label="Can't decide what to eat? Spin to pick">
+            <span class="spinner-dice-icon">🎲</span>
+            <span>Can't Decide? Spin to Pick What to Eat!</span>
+            <span class="spinner-badge-spark">✨ 3D Wheel</span>
+          </button>
+        </div>
       </div>
 
       <!-- Category Cards Grid Rendered via JS -->
@@ -210,44 +247,22 @@
         <p class="section-subtitle">
           Different tastes, different cravings - all in one destination. Experience genuine regional flavors and popular treats from our dedicated stalls.
         </p>
+
+        <!-- Live Instant Search Bar for Stalls & Menu -->
+        <div class="stall-search-box-wrap">
+          <div class="stall-search-box">
+            <svg class="search-lens-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="stallSearchInput" placeholder="Search 100+ foods, stalls, BFT tea, burgers, ice creams, soups..." aria-label="Search stalls and menu items" autocomplete="off" />
+            <button type="button" id="stallSearchClearBtn" class="search-clear-btn" aria-label="Clear search" style="display: none;">&times;</button>
+          </div>
+          <div id="stallSearchFeedback" class="stall-search-feedback" style="display: none;"></div>
+        </div>
       </div>
 
       <!-- Multiple Stalls Grid Rendered via JS -->
       <div class="stalls-grid" id="stallsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. CUSTOMER REVIEWS / TESTIMONIALS (Automatic Horizontal Scrolling)
-       ========================================================================== -->
-  <section class="section section-cream reviews-section" id="reviews">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag tag-red">Customer Reviews</span>
-        <h2 class="section-title">Loved by Families &amp; Foodies</h2>
-        <p class="section-subtitle">
-          Real feedback from families, food lovers, and park visitors who enjoyed their refreshment breaks at Kamathenu Unavagham.
-        </p>
-
-        <!-- Rating Summary Badge -->
-        <div class="reviews-rating-summary">
-          <div class="reviews-stars" aria-label="5 out of 5 stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="reviews-score">5.0 / 5.0 Rating</span>
-          <span style="color: var(--color-dark-400);">|</span>
-          <span style="font-size: 0.85rem; color: var(--color-dark-600); font-weight: 600;">Verified Visitor Reviews</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Automatic Horizontal Scrolling Carousel Track (Pauses on hover/touch) -->
-    <div class="reviews-carousel-outer" aria-label="Customer Reviews Carousel">
-      <div class="reviews-track" id="reviewsTrack"></div>
     </div>
   </section>
 
@@ -272,19 +287,23 @@
   <!-- ==========================================================================
        7. GALLERY / ATMOSPHERE SECTION
        ========================================================================== -->
-  <section class="section section-cream" id="gallery">
+  <section class="section section-cream gallery-marquee-section" id="gallery">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag tag-red">Ambience &amp; Seating</span>
-        <h2 class="section-title">Enjoy the Atmosphere</h2>
+        <span class="section-tag tag-red">Ambience &amp; Food Stalls</span>
+        <h2 class="section-title">Experience Kamathenu Life</h2>
         <p class="section-subtitle">
-          Immerse yourself in our breezy park surroundings, spacious family seating, and lively dining environment.
+          Breezy botanical park dining, buzzing food stalls, coffee house &amp; joyous family moments inside Semmozhi Poonga.
         </p>
+        <div class="gallery-hint-pill">
+          <span class="pulse-dot"></span>
+          <span>Hover to pause &bull; Click any photo to enlarge in full screen</span>
+        </div>
       </div>
-
-      <!-- Atmosphere Masonry / Asymmetric Grid Rendered via JS -->
-      <div class="gallery-grid" id="galleryGrid"></div>
     </div>
+
+    <!-- Dual Horizontal Moving Slideshow (Left & Right) -->
+    <div class="gallery-marquee-viewport" id="galleryGrid"></div>
   </section>
 
   <!-- ==========================================================================
@@ -390,11 +409,11 @@
               </svg>
               <span>Get Directions</span>
             </a>
-            <a href="tel:+919626009779" class="btn btn-outline" title="Call restaurant desk">
+            <a href="tel:+919207877770" class="btn btn-outline" title="Call restaurant desk">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
-              <span>9626009779</span>
+              <span>9207877770</span>
             </a>
           </div>
         </div>
@@ -469,6 +488,40 @@
   </section>
 
   <!-- ==========================================================================
+       11. CUSTOMER REVIEWS / TESTIMONIALS (Automatic Horizontal Scrolling)
+       ========================================================================== -->
+  <section class="section section-cream reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag tag-red">Customer Reviews</span>
+        <h2 class="section-title">Loved by Families &amp; Foodies</h2>
+        <p class="section-subtitle">
+          Real feedback from families, food lovers, and park visitors who enjoyed their refreshment breaks at Kamathenu Unavagham.
+        </p>
+
+        <!-- Rating Summary Badge -->
+        <div class="reviews-rating-summary">
+          <div class="reviews-stars" aria-label="5 out of 5 stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <span class="reviews-score">5.0 / 5.0 Rating</span>
+          <span style="color: var(--color-dark-400);">|</span>
+          <span style="font-size: 0.85rem; color: var(--color-dark-600); font-weight: 600;">Verified Visitor Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automatic Horizontal Scrolling Carousel Track (Pauses on hover/touch) -->
+    <div class="reviews-carousel-outer" aria-label="Customer Reviews Carousel">
+      <div class="reviews-track" id="reviewsTrack"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        12. CONTACT / CTA SECTION ("Hungry Yet?")
        ========================================================================== -->
   <section class="section" id="contact">
@@ -480,13 +533,13 @@
         </p>
 
         <div class="cta-buttons-wrap">
-          <a href="https://wa.me/919626009779" target="_blank" rel="noopener noreferrer" class="btn btn-gold" title="Connect on WhatsApp">
+          <a href="https://wa.me/919207877770" target="_blank" rel="noopener noreferrer" class="btn btn-gold" title="Connect on WhatsApp">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
             <span>WhatsApp Us</span>
           </a>
-          <a href="tel:+919626009779" class="btn btn-outline-white" title="Call Kamathenu Unavagham">
+          <a href="tel:+919207877770" class="btn btn-outline-white" title="Call Kamathenu Unavagham">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
@@ -535,7 +588,7 @@
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
               </svg>
             </a>
-            <a href="https://wa.me/919626009779" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="WhatsApp">
+            <a href="https://wa.me/919207877770" target="_blank" rel="noopener noreferrer" class="footer-social-icon" title="WhatsApp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
@@ -609,7 +662,7 @@
                 </svg>
               </span>
               <div>
-                <a href="tel:+919626009779" style="color: inherit;">9626009779</a>
+                <a href="tel:+919207877770" style="color: inherit;">9207877770</a>
               </div>
             </div>
             <div class="footer-contact-item">
@@ -643,13 +696,13 @@
        14. MOBILE STICKY BOTTOM ACTION BAR (Thumb Friendly)
        ========================================================================== -->
   <aside class="mobile-bottom-bar" aria-label="Quick Mobile Actions">
-    <a href="tel:+919626009779" class="bottom-action-btn" title="Call Restaurant">
+    <a href="tel:+919207877770" class="bottom-action-btn" title="Call Restaurant">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
       </svg>
       <span>Call</span>
     </a>
-    <a href="https://wa.me/919626009779" target="_blank" rel="noopener noreferrer" class="bottom-action-btn wa-highlight" title="WhatsApp Chat">
+    <a href="https://wa.me/919207877770" target="_blank" rel="noopener noreferrer" class="bottom-action-btn wa-highlight" title="WhatsApp Chat">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
       </svg>
@@ -737,6 +790,53 @@
   </div>
 
   <!-- ==========================================================================
+       18. INTERACTIVE 3D FOOD SPINNER MODAL ("Can't Decide What to Eat?")
+       ========================================================================== -->
+  <div class="food-spinner-modal" id="foodSpinnerModal" role="dialog" aria-modal="true" aria-label="Interactive Food Decision Spinner">
+    <div class="food-spinner-backdrop" id="foodSpinnerBackdrop"></div>
+    <div class="food-spinner-container">
+      <button type="button" class="food-spinner-close-btn" id="foodSpinnerCloseBtn" aria-label="Close spinner dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="food-spinner-header">
+        <span class="food-spinner-tag">🎲 PARK CRAVINGS DECIDER</span>
+        <h3 class="food-spinner-title">What's Your Taste Today?</h3>
+        <p class="food-spinner-desc">Can't pick between biryani, burgers, BFT tea or dessert? Let our 3D wheel surprise you!</p>
+      </div>
+
+      <!-- 3D Card Display -->
+      <div class="food-spinner-card-stage">
+        <div class="food-spinner-3d-card" id="foodSpinnerCard">
+          <div class="spinner-card-inner">
+            <div class="spinner-card-glow"></div>
+            <img src="image/food/fried-chicken.jpg" alt="Selected dish" id="spinnerResultImg" />
+            <div class="spinner-card-content">
+              <span class="spinner-dish-badge" id="spinnerDishCategory">Food Highlight</span>
+              <h4 class="spinner-dish-name" id="spinnerDishName">Crispy Fried Chicken</h4>
+              <p class="spinner-dish-stall" id="spinnerDishStall">Available at: Fryzo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="food-spinner-actions">
+        <button type="button" class="btn btn-spin-action" id="spinAgainBtn">
+          <span class="spin-btn-icon">⚡</span>
+          <span>Spin Again!</span>
+        </button>
+        <button type="button" class="btn btn-gold" id="spinnerGoToStallBtn">
+          <span>Explore This Stall & Menu &rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
        17. BACK TO TOP BUTTON
        ========================================================================== -->
   <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
@@ -750,3 +850,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+

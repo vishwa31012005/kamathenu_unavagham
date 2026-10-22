@@ -14,11 +14,11 @@ const restaurantData = {
     shortLocation: "Inside Semmozhi Poonga | Near the Play Area",
     fullLocation: "Inside Semmozhi Poonga, Coimbatore, Near the Play Area",
     city: "Coimbatore",
-    phone: "9626009779",
-    phoneFormatted: "+91 96260 09779",
-    phoneTel: "tel:+919626009779",
-    whatsapp: "9626009779",
-    whatsappUrl: "https://wa.me/919626009779",
+    phone: "9207877770",
+    phoneFormatted: "+91 92078 77770",
+    phoneTel: "tel:+919207877770",
+    whatsapp: "9207877770",
+    whatsappUrl: "https://wa.me/919207877770",
     email: "kamathenuunavagham@gmail.com",
     openingHours: "8:00 AM - 8:00 PM",
     openingDays: "Open All Days",
@@ -34,13 +34,6 @@ const restaurantData = {
 
   // Food discovery categories ("What Are You Craving Today?")
   cravings: [
-    {
-      id: "meals",
-      name: "Meals",
-      tag: "Hearty & Filling",
-      image: "image/food/meals.jpg",
-      targetCategory: "Meals"
-    },
     {
       id: "fried-chicken",
       name: "Fried Chicken",
@@ -173,16 +166,6 @@ const restaurantData = {
       categoryTag: "Ice Creams"
     },
     {
-      id: "thattu-vadai-settu",
-      name: "A2A Salem Thattuvadai Settu",
-      badge: "Salem Street Food Icon",
-      image: "image/shops/thattu-vadai-settu.jpeg",
-      description:
-        "The beloved Salem street delicacy made with crispy thattuvadai, shredded beetroot, carrots, zesty chutneys, cucumber and cheese twists.",
-      specialties: ["Pineapple Set", "Murukku Cheese Set", "Norukkal Set", "Mixed Set"],
-      categoryTag: "Chats"
-    },
-    {
       id: "bombay-chats",
       name: "Bombay Chats",
       badge: "Chaats & Hot Snacks",
@@ -233,14 +216,14 @@ const restaurantData = {
       categoryTag: "Snacks"
     },
     {
-      id: "indhra-cotton-candies",
-      name: "Indhra Cotton Candies",
-      badge: "Fluffy Sweet Magic",
-      image: "image/shops/cotton-candy.jpeg",
+      id: "kamathenu-coffee-shop",
+      name: "Kamathenu Coffee Shop",
+      badge: "Feel Every Sip",
+      image: "image/shops/kamathenu-coffee-shop.jpeg",
       description:
-        "Delightful, fluffy spun cotton candy in vibrant sweet clouds that bring smiles to kids and adults enjoying their day at the park.",
-      specialties: ["Classic Spun Cotton Candy"],
-      categoryTag: "Desserts"
+        "Authentic hot and refreshing brews featuring BFT Specials, Black Teas, Milk Teas, and Green Teas. Served with love and free brown sugar.",
+      specialties: ["BFT Plain", "Ginger Milk Tea", "Lemon Black Tea", "Lemon Tulasi Green Tea"],
+      categoryTag: "Drinks"
     },
     {
       id: "massage-center",
@@ -788,80 +771,6 @@ const restaurantData = {
       description: "Freshly brewed aromatic hot coffee."
     },
 
-    // --- A2A SALEM THATTUVADAI SETTU ---
-    {
-      id: "tv-01",
-      name: "Pineapple Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Crispy thattuvadais sandwiched with grated veggies, zesty chutneys, and sweet pineapple slice."
-    },
-    {
-      id: "tv-02",
-      name: "Norukkal Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Crushed thattuvadais mixed with fresh carrots, beetroot, roasted peanuts, and spicy tangy chutney."
-    },
-    {
-      id: "tv-03",
-      name: "Murukku Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Crunchy murukku layers stuffed with spicy vegetable mixture and coriander chutney."
-    },
-    {
-      id: "tv-04",
-      name: "Mango Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Crispy thattuvadai sandwiches layered with shredded raw mango and spicy red chutney."
-    },
-    {
-      id: "tv-05",
-      name: "Cucumber Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Cool refreshing cucumber slices stuffed between crispy thattuvadais with spicy podi."
-    },
-    {
-      id: "tv-06",
-      name: "Cheese Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Rich grated cheese topping over the authentic Salem thattuvadai vegetable stuffing."
-    },
-    {
-      id: "tv-07",
-      name: "Mayonnaise Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Creamy mayonnaise blend added to the traditional spicy vegetable thattuvadai."
-    },
-    {
-      id: "tv-08",
-      name: "Mixed Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "The ultimate combo plate featuring a curated assortment of signature thattuvadai sets."
-    },
-    {
-      id: "tv-09",
-      name: "Murukku Cheese Set",
-      stall: "A2A Salem Thattuvadai Settu",
-      category: "Chats",
-      type: "veg",
-      description: "Crispy murukku stuffed with spiced veggies and smothered with grated cheese."
-    },
-
     // --- BOMBAY CHATS ---
     {
       id: "bc-01",
@@ -1196,14 +1105,6 @@ const restaurantData = {
       category: "Desserts",
       type: "veg",
       description: "Dual swirl of velvety chocolate and vanilla ice cream in a waffle sandwich."
-    },
-    {
-      id: "ds-01",
-      name: "Cotton Candy",
-      stall: "Indhra Cotton Candies",
-      category: "Desserts",
-      type: "veg",
-      description: "Freshly spun, cloud-soft pink and blue cotton candy on a stick."
     },
 
     // --- GURU COOL HUB: JUICES & DRINKS ---
@@ -1646,6 +1547,183 @@ const restaurantData = {
       category: "Other",
       type: "service",
       description: "A luxurious combination massage experience."
+    },
+
+    // --- KAMATHENU COFFEE SHOP ---
+    // BFT Specials
+    {
+      id: "kcs-bft-01",
+      name: "BFT Plain",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Signature BFT special brew. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-bft-02",
+      name: "BFT Milk",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Rich milk-infused BFT special brew. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-bft-03",
+      name: "BFT Extra",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Extra strong and flavorful BFT special. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-bft-04",
+      name: "BFT Express",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Quick aromatic BFT express brew. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-bft-05",
+      name: "BFT Double",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Double strength BFT special for an energetic kick. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+
+    // Black Tea
+    {
+      id: "kcs-bt-01",
+      name: "Black Tea Plain",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Classic robust black tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-bt-02",
+      name: "Lemon Black Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Zesty lemon infused black tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-bt-03",
+      name: "Coriander Black Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Aromatic coriander spiced black tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-bt-04",
+      name: "Jeera Black Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Digestive cumin spiced black tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-bt-05",
+      name: "Ginger + Lemon Black Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Soothing ginger and tangy lemon black tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+
+    // Milk Tea
+    {
+      id: "kcs-mt-01",
+      name: "Milk Tea Plain",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Traditional hot milk tea brewed to perfection. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-mt-02",
+      name: "Ginger Milk Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Invigorating fresh crushed ginger milk tea. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-mt-03",
+      name: "Cardamom Milk Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Aromatic fragrant cardamom spiced milk tea. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-mt-04",
+      name: "Gulkand Milk Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Sweet rose petal gulkand infused rich milk tea. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-mt-05",
+      name: "Masala Milk Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Warming whole Indian spices blended milk tea. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+    {
+      id: "kcs-mt-06",
+      name: "Chocolate Milk Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Decadent chocolate swirl milk tea. Quantity: 90 ml | 130 ml. Free brown sugar."
+    },
+
+    // Green Tea
+    {
+      id: "kcs-gt-01",
+      name: "Green Tea Plain",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Antioxidant-rich pure green tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-gt-02",
+      name: "Lemon Grass Green Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Refreshing citrusy lemongrass green tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-gt-03",
+      name: "Mint Green Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Cool refreshing garden mint green tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-gt-04",
+      name: "Lemon Tulasi Green Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Immunity boosting lemon and holy basil green tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
+    },
+    {
+      id: "kcs-gt-05",
+      name: "Watermelon Green Tea",
+      stall: "Kamathenu Coffee Shop",
+      category: "Drinks",
+      type: "veg",
+      description: "Unique fruity watermelon flavored green tea. Quantity: 90 ml | 130 ml. Add-on honey ₹5, free brown sugar."
     }
   ],
 
@@ -1677,7 +1755,7 @@ const restaurantData = {
     }
   ],
 
-  // Gallery / Atmosphere Images
+  // Gallery / Atmosphere & Shops Showcase
   atmosphereGallery: [
     {
       src: "image/atmosphere/gallery-01.jpeg",
@@ -1686,10 +1764,22 @@ const restaurantData = {
       category: "Ambience"
     },
     {
+      src: "image/shops/kamathenu-coffee-shop.jpeg",
+      title: "Kamathenu Coffee Shop",
+      subtitle: "Feel Every Sip - BFT Specials, Hot Teas & Coffee",
+      category: "Coffee & Tea"
+    },
+    {
       src: "image/atmosphere/gallery-02.jpeg",
       title: "Dining Area",
       subtitle: "Comfortable seating for families and groups",
       category: "Seating"
+    },
+    {
+      src: "image/shops/front-view.jpeg",
+      title: "Grand Entrance View",
+      subtitle: "Illuminated evening park frontage at Semmozhi Poonga",
+      category: "Ambience"
     },
     {
       src: "image/atmosphere/gallery-03.jpeg",
@@ -1698,93 +1788,159 @@ const restaurantData = {
       category: "Ambience"
     },
     {
+      src: "image/shops/fryzo.jpeg",
+      title: "Fryzo Fried Chicken & Burgers",
+      subtitle: "Crispy chicken wings, juicy burgers and wraps",
+      category: "Food Stall"
+    },
+    {
       src: "image/atmosphere/gallery-04.jpeg",
-      title: "Family Dining",
-      subtitle: "A perfect spot for family outings",
+      title: "Family Dining Environment",
+      subtitle: "A perfect spot for relaxing family outings",
       category: "Family"
     },
     {
+      src: "image/shops/kamathenu-restaurant.jpeg",
+      title: "Kamathenu Restaurant",
+      subtitle: "Authentic South Indian meals, biryani and curries",
+      category: "Restaurant"
+    },
+    {
       src: "image/atmosphere/gallery-05.jpeg",
-      title: "Fresh & Tasty",
-      subtitle: "Delicious food served fresh every day",
+      title: "Fresh & Tasty Dishes",
+      subtitle: "Delicious food prepared fresh on order",
       category: "Food"
     },
     {
+      src: "image/shops/guru-cool-hub.jpeg",
+      title: "Guru Cool Hub",
+      subtitle: "Fresh squeezed juices, ice cream sandwiches & waffles",
+      category: "Food Stall"
+    },
+    {
       src: "image/atmosphere/gallery-06.jpeg",
-      title: "Green Surroundings",
-      subtitle: "Dine amidst the lush greenery of the park",
+      title: "Botanical Greenery",
+      subtitle: "Dine amidst the lush botanical park garden",
       category: "Environment"
+    },
+    {
+      src: "image/shops/lazza-premium-gold.jpeg",
+      title: "Lazza Ice Cream Premium Gold",
+      subtitle: "Gourmet kulfi, cassata cones and luxury scoops",
+      category: "Dessert Stall"
     },
     {
       src: "image/atmosphere/gallery-07.jpeg",
       title: "Stall Variety",
-      subtitle: "Multiple food stalls with diverse cuisine",
+      subtitle: "Diverse multi-cuisine stalls under one roof",
       category: "Stalls"
     },
     {
-      src: "image/atmosphere/gallery-08.jpeg",
-      title: "Outdoor Dining",
-      subtitle: "Enjoy open-air dining in a park setting",
-      category: "Ambience"
+      src: "image/shops/bombay-chats.jpeg",
+      title: "Bombay Chats",
+      subtitle: "Pani Puri, Masala Puri, Bhel Puri & Hot Puffs",
+      category: "Chaats"
     },
     {
-      src: "image/atmosphere/gallery-09.jpeg",
-      title: "Cozy Corners",
-      subtitle: "Relaxed seating corners for every group",
+      src: "image/atmosphere/gallery-08.jpeg",
+      title: "Open-Air Garden Dining",
+      subtitle: "Breezy dining under shady canopies",
       category: "Seating"
     },
     {
+      src: "image/shops/a2a-ice-cream.jpeg",
+      title: "A2A Ice Popsticks",
+      subtitle: "Natural fruit sticks, mango and dragon fruit ice",
+      category: "Dessert Stall"
+    },
+    {
+      src: "image/atmosphere/gallery-09.jpeg",
+      title: "Cozy Dining Corners",
+      subtitle: "Peaceful corners to unwind with great food",
+      category: "Seating"
+    },
+    {
+      src: "image/shops/hot-spring.jpeg",
+      title: "Hot Spring Spiral Potato",
+      subtitle: "Crispy spiral potato twisters with peri peri & cheese",
+      category: "Snack Stall"
+    },
+    {
       src: "image/atmosphere/gallery-10.jpeg",
-      title: "Park Atmosphere",
-      subtitle: "Surrounded by nature and good company",
+      title: "Park Breeze & Ambience",
+      subtitle: "Natural environment right beside the kids play area",
       category: "Environment"
     },
     {
+      src: "image/shops/natural-soup.jpeg",
+      title: "Natural Herbal Soups",
+      subtitle: "Authentic Mudakathan & Thuthuvalai immunity soups",
+      category: "Healthy Brews"
+    },
+    {
       src: "image/atmosphere/gallery-11.jpeg",
-      title: "Evening Dining",
-      subtitle: "A pleasant evening at Kamathenu Unavagham",
+      title: "Evening Lights & Dining",
+      subtitle: "Warm festive lights creating an inviting dinner mood",
       category: "Ambience"
     },
     {
+      src: "image/shops/sr-pop-corn.jpeg",
+      title: "SR Popcorn & Steamed Corn",
+      subtitle: "Crunchy butter popcorn and hot brewed coffee",
+      category: "Snack Stall"
+    },
+    {
       src: "image/atmosphere/gallery-12.jpeg",
-      title: "Food Preparations",
-      subtitle: "Fresh preparations served with care",
+      title: "Fresh Culinary Preparation",
+      subtitle: "Hygienic open kitchens and active cooking",
       category: "Food"
     },
     {
+      src: "image/shops/delhi-appalam.jpeg",
+      title: "Delhi Appalam Counter",
+      subtitle: "Crispy giant seasoned appalam freshly fried",
+      category: "Snack Stall"
+    },
+    {
       src: "image/atmosphere/gallery-13.jpeg",
-      title: "Clean & Organized",
-      subtitle: "Well-maintained and hygienic premises",
+      title: "Spotless Clean Premises",
+      subtitle: "Carefully maintained for ~100 seating capacity",
       category: "Facilities"
     },
     {
+      src: "image/shops/massage-center.jpeg",
+      title: "Kamathenu Relax Lounge",
+      subtitle: "Rejuvenating foot & head massage wellness center",
+      category: "Wellness"
+    },
+    {
       src: "image/atmosphere/gallery-14.jpeg",
-      title: "Group Seating",
-      subtitle: "Spacious seating for large groups and families",
+      title: "Spacious Group Benches",
+      subtitle: "Plenty of room for large families and birthday gatherings",
       category: "Seating"
     },
     {
       src: "image/atmosphere/gallery-15.jpeg",
-      title: "Parkside View",
-      subtitle: "Beautiful views from our dining area",
+      title: "Scenic Parkside Vista",
+      subtitle: "Picturesque views while enjoying delicious meals",
       category: "Environment"
     },
     {
       src: "image/atmosphere/gallery-16.jpeg",
-      title: "Happy Dining",
-      subtitle: "Creating memories over great food",
+      title: "Joyous Gatherings",
+      subtitle: "Unforgettable moments with family and friends",
       category: "Family"
     },
     {
       src: "image/atmosphere/gallery-17.jpeg",
-      title: "Kamathenu Spread",
-      subtitle: "A wide spread of traditional and modern dishes",
+      title: "Culinary Spread",
+      subtitle: "From South Indian staples to continental fast food",
       category: "Food"
     },
     {
       src: "image/atmosphere/gallery-18.jpeg",
-      title: "Our Ambience",
-      subtitle: "The perfect atmosphere for a complete dining experience",
+      title: "The Kamathenu Experience",
+      subtitle: "Different Tastes, One Destination inside Semmozhi Poonga",
       category: "Ambience"
     }
   ],
@@ -1969,5 +2125,7 @@ const restaurantData = {
 if (typeof window !== "undefined") {
   window.restaurantData = restaurantData;
 }
+
+
 
 

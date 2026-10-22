@@ -1,4 +1,4 @@
-# KAMATHENU UNAVAGHAM — Landing Page Website
+﻿# KAMATHENU UNAVAGHAM — Landing Page Website
 
 > **Different Tastes. One Destination.**  
 > A premium, modern, visually impressive, mobile-first website for Kamathenu Unavagham located inside Semmozhi Poonga, Coimbatore.
@@ -66,9 +66,9 @@ All business data and media paths are **centralized inside `js/data.js`**. You d
 In `js/data.js`, edit `businessInfo`:
 ```javascript
 businessInfo: {
-  phone: "9626009779",
-  whatsapp: "9626009779",
-  whatsappUrl: "https://wa.me/919626009779",
+  phone: "9207877770",
+  whatsapp: "9207877770",
+  whatsappUrl: "https://wa.me/919207877770",
   email: "kamathenuunavagham@gmail.com",
   openingHours: "8:00 AM – 8:00 PM",
   ...
@@ -131,3 +131,4 @@ You can deploy this static project to any hosting platform in seconds:
 - **GitHub Pages**: Push repo and enable Pages under Settings.
 - **Netlify / Vercel**: Drag & drop this folder into your dashboard.
 - **cPanel / Apache / Nginx**: Upload all files to `public_html`.
+
