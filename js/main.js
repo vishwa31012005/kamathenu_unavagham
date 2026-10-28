@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         (c) => `
       <div class="craving-card" data-category="${c.targetCategory}" role="button" tabindex="0" title="Explore ${c.name}">
         <div class="craving-img-box">
-          <img src="${c.image}" alt="${c.name} at Kamathenu Unavagham" loading="lazy" />
+          <img class="craving-photo craving-photo--${c.id}" src="${c.image}" alt="${c.name} at Kamathenu Unavagham" width="640" height="480" loading="lazy" decoding="async" />
           <span class="craving-floating-tag">${c.tag}</span>
           <div class="craving-overlay"></div>
         </div>

@@ -38,28 +38,28 @@ const restaurantData = {
       id: "fried-chicken",
       name: "Fried Chicken",
       tag: "Crispy & Juicy",
-      image: "image/food/fried-chicken.jpg",
+      image: "image/food/fried-chicken.jpg?v=20261028",
       targetCategory: "Fried Chicken"
     },
     {
       id: "burgers",
       name: "Burgers",
       tag: "Loaded Gourmet",
-      image: "image/food/burgers.jpg",
+      image: "image/food/burgers.jpg?v=20261028",
       targetCategory: "Burgers"
     },
     {
       id: "sandwiches",
       name: "Sandwiches",
       tag: "Toasted & Cheesy",
-      image: "image/food/sandwiches.jpg",
+      image: "image/food/sandwiches.jpg?v=20261028",
       targetCategory: "Sandwiches"
     },
     {
       id: "momos",
       name: "Momos",
       tag: "Steamed & Schezwan",
-      image: "image/food/momos.jpg",
+      image: "image/food/momos.jpg?v=20261028",
       targetCategory: "Momos"
     },
     {
@@ -73,42 +73,42 @@ const restaurantData = {
       id: "waffles",
       name: "Waffles",
       tag: "Belgian & Chocolatey",
-      image: "image/food/waffles.jpg",
+      image: "image/food/waffles.jpg?v=20261028",
       targetCategory: "Waffles"
     },
     {
       id: "drinks",
       name: "Drinks",
       tag: "Juices & Mojitos",
-      image: "image/food/drinks.jpg",
+      image: "image/food/drinks.jpg?v=20261028",
       targetCategory: "Drinks"
     },
     {
       id: "natural-soups",
       name: "Natural Soups",
       tag: "Authentic Herbal",
-      image: "image/food/natural-soups.jpg",
+      image: "image/food/natural-soups.jpg?v=20261028",
       targetCategory: "Soups"
     },
     {
       id: "popcorn",
       name: "Popcorn",
       tag: "Crunchy & Fresh",
-      image: "image/food/popcorn.jpg",
+      image: "image/food/popcorn.jpg?v=20261028",
       targetCategory: "Snacks"
     },
     {
       id: "chats",
       name: "Chats",
       tag: "Crisp & Tangy",
-      image: "image/food/chats.jpg",
+      image: "image/food/chats.jpg?v=20261028",
       targetCategory: "Chats"
     },
     {
       id: "potato-rolls",
       name: "Potato Rolls",
       tag: "Spiral & Seasoned",
-      image: "image/food/potato-rolls.jpg",
+      image: "image/food/potato-rolls.jpg?v=20261028",
       targetCategory: "Other"
     }
   ],

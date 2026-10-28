@@ -225,15 +225,29 @@ h1, h2, h3, h4, h5, h6 { color: var(--ink); letter-spacing: -0.04em; }
   overflow: hidden;
   background: #f0f0ea;
 }
-.craving-img-box img {
+.craving-img-box img,
+.craving-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
+  display: block;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .craving-card:hover .craving-img-box img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
+.craving-photo--fried-chicken { object-position: center 58%; }
+.craving-photo--burgers { object-position: center 46%; }
+.craving-photo--sandwiches { object-position: center 48%; }
+.craving-photo--momos { object-position: center 50%; }
+.craving-photo--waffles { object-position: center 36%; }
+.craving-photo--drinks { object-position: center 42%; }
+.craving-photo--natural-soups { object-position: center 68%; }
+.craving-photo--popcorn { object-position: center 38%; }
+.craving-photo--chats { object-position: center 50%; }
+.craving-photo--potato-rolls { object-position: center 48%; }
+.craving-photo--ice-pops { object-position: center 50%; }
 .craving-floating-tag {
   position: absolute;
   top: 12px;
